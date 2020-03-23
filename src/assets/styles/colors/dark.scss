@@ -5,7 +5,6 @@ Email: niravjoshi87@gmail.com
 File: scss
 */
 
-
 $dark-primary: mat-palette($mat-blue);
 $dark-accent:  mat-palette($mat-indigo, A200, A100, A400);
 $dark-warn: mat-palette($mat-pink);
@@ -19,10 +18,13 @@ $sidebar-icons: #909394;
 $light: #505050;
 $inverse:#424242;
 $border:rgba(0, 0, 0, 0.12);
-
+ 
     /* This is for the navigation*/
      #snav {
-        .mat-nav-list .mat-list-item {
+        .mat-list-item {
+            .sub-item {
+                background: $inverse;
+            }
             a{
                 color:$sidebar-text;
                 mat-icon{
@@ -32,7 +34,6 @@ $border:rgba(0, 0, 0, 0.12);
             &.selected .sub-item .mat-list-item-content a.selected{
                  color:$white;
             }
-
         }
     }
     /*This is for the chartis js*/
@@ -62,6 +63,3 @@ $border:rgba(0, 0, 0, 0.12);
     .cal-month-view .cal-day-cell:not(:last-child), .cal-month-view .cal-days .cal-cell-row, .cal-header, .cal-month-view .cal-days{
         border-color:$border;
     }
-
-
-

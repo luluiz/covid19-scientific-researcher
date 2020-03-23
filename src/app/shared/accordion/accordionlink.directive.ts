@@ -13,8 +13,7 @@ import { AccordionDirective } from './accordion.directive';
   selector: '[appAccordionLink]'
 })
 export class AccordionLinkDirective implements OnInit, OnDestroy {
-  @Input()
-  public group: any;
+  @Input() public group: any;
 
   @HostBinding('class.selected')
   @Input()

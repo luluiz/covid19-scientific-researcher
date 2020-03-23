@@ -18,8 +18,6 @@ File: scss
  */
 
 @import 'variable';
-
-
 @import 'icons/themify-icons/themify-icons.css';
 @import 'icons/font-awesome/css/font-awesome.css';
 @import 'spinner';
@@ -28,7 +26,6 @@ File: scss
 @import 'widgets';
 @import 'pages';
 @import 'sidebar';
-@import 'dark-sidebar';
 @import 'responsive';
 @import 'rtl';
 
@@ -37,20 +34,20 @@ File: scss
 
 .danger {  
 	@import 'colors/red';
-	@include angular-material-theme($red-app-theme);
+  	@include angular-material-theme($red-app-theme);
 }
 
 // Blue Theme
 
-.blue { 
-	@import 'colors/blue'; 
+.blue {  
+	@import 'colors/blue';
   	@include angular-material-theme($blue-app-theme);
 }
 
 // Green Theme
 
-.green {  
-	@import 'colors/green';
+.green { 
+	@import 'colors/green'; 
   	@include angular-material-theme($green-app-theme);
 }
 

@@ -15,8 +15,7 @@ import { AppHeaderComponent } from './header/header.component';
 import { AppSidebarComponent } from './sidebar/sidebar.component';
 import { AppBreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
-import { PerfectScrollbarConfigInterface, PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
-
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 /** @title Responsive sidenav */
 @Component({
   selector: 'app-full-layout',
@@ -33,16 +32,14 @@ export class FullComponent implements OnDestroy {
   boxed: boolean;
   danger: boolean;
   showHide: boolean;
-  url: string;
   sidebarOpened;
-
+	
 	public showSearch = false;
 
   public config: PerfectScrollbarConfigInterface = {};
   private _mobileQueryListener: () => void;
-    
+
   constructor(
-	public router: Router,
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
     public menuItems: MenuItems
@@ -55,6 +52,6 @@ export class FullComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
-
+ 
   // Mini sidebar
 }

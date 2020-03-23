@@ -7,6 +7,8 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 })
 export class AppHeaderComponent {
   public config: PerfectScrollbarConfigInterface = {};
+	
+  
 
 
   // This is for Notifications
@@ -14,7 +16,7 @@ export class AppHeaderComponent {
     {
       round: 'round-danger',
       icon: 'ti-link',
-      title: 'Launch Admin',
+      title: 'Luanch Admin',
       subject: 'Just see the my new admin!',
       time: '9:30 AM'
     },

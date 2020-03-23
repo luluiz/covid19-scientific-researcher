@@ -4,10 +4,11 @@ Author: Themedesigner
 Email: niravjoshi87@gmail.com
 File: scss
 */
-
 html body {
 [dir="rtl"] {
-        .p-l-0 {
+
+	
+		.p-l-0 {
 		    padding-right: 0px;
 		}
 
@@ -96,6 +97,5 @@ html body {
 	.mailbox .message-center a .user-img {
 		margin: 0 0 0 10px;
 	}
-    
     }
 }

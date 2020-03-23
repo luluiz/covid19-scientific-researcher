@@ -289,7 +289,6 @@ html body {
 .p-b-40 {
     padding-bottom: 40px;
 }
-
 .p-l-30 {
 	padding-left: 30px;
 }
@@ -1022,10 +1021,6 @@ list inline
         
     }
 }
-.button-row button{
-    margin-right:2px;
-    margin-left:2px;
-}
 
 .mini-spacer {
 	margin-top: 90px;
@@ -1082,4 +1077,26 @@ ul.list-style-none {
 			color: $sidebar-icons;
 		}
     }
+}
+
+.list-unstyled{
+    margin:0px;
+    padding:0px;
+
+    li{
+        list-style:none;
+        display:flex;
+        align-items:flex-start;
+        padding:15px 0;
+    }
+    .shrink-none{
+        flex-shrink:0;
+    }
+}
+.cursor-pointer{
+    cursor:pointer
+}
+
+.page-breadcrumb .breadcrumb .breadcrumb-item a{
+    display:initial;
 }

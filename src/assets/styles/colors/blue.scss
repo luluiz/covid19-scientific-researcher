@@ -5,7 +5,6 @@ Email: niravjoshi87@gmail.com
 File: scss
 */
 
-
 $blue-app-primary: mat-palette($mat-indigo, 600);
 $blue-app-accent: mat-palette($mat-blue, A200, A100, A400);
 $blue-app-warn: mat-palette($mat-pink);
@@ -15,7 +14,7 @@ $themecolor:#1E88E5;
 $themecolor-alt: #1E88E5;
 $white:#fff;
 #snav {
-    .mat-nav-list .mat-list-item { 
+    .mat-list-item { 
         .mat-list-item-content {
             &:hover {
                 > a {

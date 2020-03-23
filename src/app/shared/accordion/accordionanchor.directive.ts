@@ -10,12 +10,10 @@ export class AccordionAnchorDirective {
 
   constructor(@Inject(AccordionLinkDirective) navlink: AccordionLinkDirective) {
     this.navlink = navlink;
-    
   }
 
   @HostListener('click', ['$event'])
   onClick(e: any) {
     this.navlink.toggle();
-    
   }
 }
