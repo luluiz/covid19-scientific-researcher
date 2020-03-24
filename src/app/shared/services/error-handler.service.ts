@@ -34,17 +34,12 @@ export class ErrorHandlerService {
         switch (status) {
             case 0:
                 this.router.navigate(['404']);
-            case 401:
-                this.router.navigate(['/auth/login']);
-                break;
-            case 403:
-                this.router.navigate(['/auth/bloqueio']);
                 break;
             case 404:
                 this.router.navigate(['404']);
                 break;
             default:
-                this.router.navigate(['/auth/login']);
+                this.router.navigate(['404']);
                 break;
         };
     }

@@ -1,0 +1,11 @@
+.mat-column-open {
+    flex: 0.3;
+}
+
+.mat-column-ref {
+    flex: 0.3;
+}
+
+.mat-cell {
+    font-size: 12px;
+}

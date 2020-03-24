@@ -1,0 +1,95 @@
+<div class="mat-elevation-z4" style="padding: 0; margin: 0 15px;">
+    <app-filters (response)="getArticles($event)"></app-filters>
+</div>
+
+<mat-card>
+    <mat-paginator class="mat-elevation-z4" [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="getArticles()"> </mat-paginator>
+    <mat-table [dataSource]="itensDS" class="mat-elevation-z4" matSort (matSortChange)="getArticles()" matSortActive="created" matSortDirection="desc">
+        <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
+            <mat-cell *matCellDef="let item"> {{item.title}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="authors">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Authors </mat-header-cell>
+            <mat-cell *matCellDef="let item"> {{item.authors}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="abstract">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Abstract </mat-header-cell>
+            <mat-cell *matCellDef="let item"> {{item.abstract}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="published_year">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Published Year </mat-header-cell>
+            <mat-cell *matCellDef="let item"> {{item.published_year}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="published_month">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Published Month </mat-header-cell>
+            <mat-cell *matCellDef="let item"> {{item.published_month}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="journal">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Journal </mat-header-cell>
+            <mat-cell *matCellDef="let item"> {{item.journal}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="volume">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Volume </mat-header-cell>
+            <mat-cell *matCellDef="let item"> {{item.volume}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="issue">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Issue </mat-header-cell>
+            <mat-cell *matCellDef="let item"> {{item.issue}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="pages">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Pages </mat-header-cell>
+            <mat-cell *matCellDef="let item"> {{item.pages}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="accession">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Accession </mat-header-cell>
+            <mat-cell *matCellDef="let item"> {{item.accession}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="doi">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> DOI </mat-header-cell>
+            <mat-cell *matCellDef="let item"> {{item.doi}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="ref">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Ref. </mat-header-cell>
+            <mat-cell *matCellDef="let item"> {{item.ref}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="covidence">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Covidence </mat-header-cell>
+            <mat-cell *matCellDef="let item"> {{item.covidence}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="study">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Study </mat-header-cell>
+            <mat-cell *matCellDef="let item"> {{item.study}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="notes">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Notes </mat-header-cell>
+            <mat-cell *matCellDef="let item"> {{item.notes}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="tags">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Tags </mat-header-cell>
+            <mat-cell *matCellDef="let item"> {{item.tags}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="created">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Created </mat-header-cell>
+            <mat-cell *matCellDef="let item"> {{item.created | date}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="updated">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Updated </mat-header-cell>
+            <mat-cell *matCellDef="let item"> {{item.updated | date}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="open">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Action </mat-header-cell>
+            <mat-cell *matCellDef="let item">
+                <button mat-icon-button color="primary" matTooltip="View Abstract" (click)="abstract(item)">
+                    <mat-icon>library_books</mat-icon>
+                </button>
+                <button mat-icon-button color="primary" (click)="open(item)" matTooltip="Open">
+                    <mat-icon>open_in_new</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="columns; sticky: true"> </mat-header-row>
+        <mat-row mat-row *matRowDef="let row; columns: columns;"></mat-row>
+    </mat-table>
+</mat-card>

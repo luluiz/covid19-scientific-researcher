@@ -1,0 +1,16 @@
+<h4 style="margin: 0;">
+    <mat-icon>library_books</mat-icon>
+    <span fxFlex> Abstract</span>
+</h4>
+
+<mat-divider style="margin: 10px 0;"></mat-divider>
+
+<mat-card-content>
+    <div fxLayout="row wrap">
+        {{article?.abstract}}
+    </div>
+</mat-card-content>
+
+<mat-card-actions>
+    <button mat-raised-button (click)="close()">Close</button>
+</mat-card-actions>

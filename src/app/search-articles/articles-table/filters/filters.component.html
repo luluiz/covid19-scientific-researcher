@@ -1,0 +1,58 @@
+<mat-card style="margin: 0px;">
+    <!-- <mat-card-content> -->
+    <h3 style="margin: 0px" style="padding: 15px 15px 0 15px;">
+        <span class="fa fa-search"></span> Filters
+    </h3>
+    <div [formGroup]="form" fxLayout="row wrap" fxFlexAlign="start center">
+        <mat-form-field fxFlex="25">
+            <input matInput formControlName="title" placeholder="Title">
+        </mat-form-field>
+        <mat-form-field fxFlex="25">
+            <input matInput formControlName="authors" placeholder="Authors">
+        </mat-form-field>
+        <mat-form-field fxFlex="25">
+            <input matInput formControlName="journal" placeholder="Journal">
+        </mat-form-field>
+        <mat-form-field fxFlex="25">
+            <input matInput formControlName="abstract" placeholder="Abstract">
+        </mat-form-field>
+        <mat-form-field fxFlex="10">
+            <input matInput formControlName="volume" placeholder="Volume">
+        </mat-form-field>
+        <mat-form-field fxFlex="10">
+            <mat-select formControlName="published_year" placeholder="Published Year">
+                <mat-option *ngFor="let year of years" [value]="year">{{year}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field fxFlex="10">
+            <mat-select formControlName="published_month" placeholder="Published Month">
+                <mat-option *ngFor="let month of months" [value]="month.id">{{month.txt}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <!-- <mat-form-field fxFlex="10">
+            <input matInput formControlName="issue" placeholder="Issue">
+        </mat-form-field> -->
+        <mat-form-field fxFlex="10">
+            <input matInput formControlName="doi" placeholder="DOI">
+        </mat-form-field>
+        <mat-form-field fxFlex="10">
+            <input matInput formControlName="ref" placeholder="Ref.">
+        </mat-form-field>
+        <mat-form-field fxFlex="10">
+            <input matInput formControlName="covidence" placeholder="Covidence">
+        </mat-form-field>
+        <!-- <mat-form-field fxFlex="10">
+            <input matInput formControlName="study" placeholder="Study">
+        </mat-form-field> -->
+        <!-- <mat-form-field fxFlex="10">
+            <input matInput formControlName="created_from" placeholder="From">
+        </mat-form-field>
+        <mat-form-field fxFlex="10">
+            <input matInput formControlName="created_to" placeholder="To">
+        </mat-form-field> -->
+        <mat-form-field fxFlex="40">
+            <input matInput formControlName="tags" placeholder="Tags">
+        </mat-form-field>
+    </div>
+    <!-- </mat-card-content> -->
+</mat-card>

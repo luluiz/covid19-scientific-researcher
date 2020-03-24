@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
+import { AboutComponent } from './about/about.component';
 import { FullComponent } from './layouts/full/full.component';
+import { SearchArticlesComponent } from './search-articles/search-articles.component';
 
 
 export const AppRoutes: Routes = [
@@ -8,29 +10,13 @@ export const AppRoutes: Routes = [
         component: FullComponent,
         children: [
             {
-                path: '',
-                redirectTo: '/dashboards/dashboard1',
-                pathMatch: 'full'
+                path: 'search',
+                component: SearchArticlesComponent,
             },
             {
-                path: 'dashboards',
-                loadChildren: () => import('./dashboards/dashboards.module').then(m => m.DashboardsModule)
-            },
+                path: 'about',
+                component: AboutComponent
+            }
         ]
     },
-    // {
-    //     path: '',
-    //     component: AppBlankComponent,
-    //     children: [
-    //         {
-    //             path: 'authentication',
-    //             loadChildren:
-    //                 () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)
-    //         }
-    //     ]
-    // },
-    {
-        path: '**',
-        redirectTo: 'authentication/404'
-    }
 ];

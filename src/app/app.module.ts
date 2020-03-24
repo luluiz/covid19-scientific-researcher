@@ -1,7 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -17,6 +17,11 @@ import { AppSidebarComponent } from './layouts/full/sidebar/sidebar.component';
 import { MaterialModule } from './material-module';
 import { SharedModule } from './shared/shared.module';
 import { SpinnerComponent } from './shared/spinner.component';
+import { SearchArticlesComponent } from './search-articles/search-articles.component';
+import { AboutComponent } from './about/about.component';
+import { ArticlesTableComponent } from './search-articles/articles-table/articles-table.component';
+import { FiltersComponent } from './search-articles/articles-table/filters/filters.component';
+import { ModalAbstractComponent } from './search-articles/articles-table/modal-abstract/modal-abstract.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     suppressScrollX: true,
@@ -25,15 +30,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 };
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        FullComponent,
-        AppHeaderComponent,
-        SpinnerComponent,
-        AppBlankComponent,
-        AppSidebarComponent,
-        AppBreadcrumbComponent
-    ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
@@ -41,10 +37,25 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         FormsModule,
         FlexLayoutModule,
         HttpClientModule,
+        ReactiveFormsModule,
         PerfectScrollbarModule,
         SharedModule,
         RouterModule.forRoot(AppRoutes),
         NgMultiSelectDropDownModule.forRoot(),
+    ],
+    declarations: [
+        AppComponent,
+        FullComponent,
+        AppHeaderComponent,
+        SpinnerComponent,
+        AppBlankComponent,
+        AppSidebarComponent,
+        AppBreadcrumbComponent,
+        SearchArticlesComponent,
+        AboutComponent,
+        ArticlesTableComponent,
+        FiltersComponent,
+        ModalAbstractComponent
     ],
     providers: [
         {
@@ -52,6 +63,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
             useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
         },
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

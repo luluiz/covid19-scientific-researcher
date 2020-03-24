@@ -17,7 +17,7 @@ export class ArticlesService {
         private errorHandlerService: ErrorHandlerService,
     ) { }
 
-    get(filters?: Article): Observable<any> {
+    get(filters?: Article, limit?: number, skip?: number, sort?: string, direction?: string): Observable<any> {
         let query: any = {};
         if (filters?._id) query._id = filters._id;
         if (filters?.title) query.title = filters.title;
@@ -37,9 +37,20 @@ export class ArticlesService {
         if (filters?.notes) query.notes = filters.notes;
         if (filters?.tags) query.tags = filters.tags;
 
-        return this.http.get(this.API + '/article', { params: query })
+        if (limit) query.limit = limit.toString();
+        if (skip) query.skip = skip.toString();
+        if (sort) query.sort = sort;
+        if (direction) query.direction = direction;
+
+        return this.http.get(this.API + 'article', { params: query })
             .pipe(timeout(environment.http_timeout), catchError(erro => this.errorHandlerService.handler(erro)));
     }
+
+    count(): Observable<any> {
+        return this.http.get(this.API + '/article/count')
+            .pipe(timeout(environment.http_timeout), catchError(erro => this.errorHandlerService.handler(erro)));
+    }
+}
 
     // editarImagemItem(id_cotacao: string, id_item: string, file: File): Observable<any> {
     //     let id_oficina = this.authService.getIdOficina();
@@ -49,4 +60,3 @@ export class ArticlesService {
     //     return this.http.put(this.API + 'cotacao/imagem/' + id_oficina + '/' + id_cotacao + '/' + id_item, formData)
     //         .pipe(timeout(environment.http_timeout), catchError(erro => this.errorHandlerService.handler(erro)));
     // }
-}

@@ -26,20 +26,10 @@ export interface Menu {
 
 const MENUITEMS = [
     {
-        state: '',
-        name: 'Personal',
-        type: 'saperator',
-        icon: 'av_timer'
-    },
-    {
-        state: 'dashboards',
-        name: 'Dashboards',
-        type: 'sub',
-        icon: 'av_timer',
-        children: [
-            { state: 'dashboard1', name: 'Dashboard 1', type: 'link' },
-            { state: 'dashboard2', name: 'Dashboard 2', type: 'link' }
-        ]
+        state: 'search',
+        name: 'Search',
+        type: 'link',
+        icon: 'search',
     },
     {
         state: 'about',
