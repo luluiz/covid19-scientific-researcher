@@ -37,6 +37,20 @@ const MENUITEMS = [
         type: 'link',
         icon: 'info'
     },
+    // {
+    //     state: 'admin',
+    //     name: 'Admin',
+    //     type: 'sub',
+    //     icon: 'vpn_key',
+    //     children: [
+    //         {
+    //             state: 'upload',
+    //             name: 'Upload',
+    //             type: 'link',
+    //             icon: 'cloud_upload'
+    //         }
+    //     ]
+    // },
 ];
 
 @Injectable()

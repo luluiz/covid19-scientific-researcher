@@ -1,58 +1,84 @@
 <mat-card style="margin: 0px;">
-    <!-- <mat-card-content> -->
     <h3 style="margin: 0px" style="padding: 15px 15px 0 15px;">
         <span class="fa fa-search"></span> Filters
     </h3>
     <div [formGroup]="form" fxLayout="row wrap" fxFlexAlign="start center">
-        <mat-form-field fxFlex="25">
+        <mat-form-field fxFlex="25" fxFlex.xs="100">
             <input matInput formControlName="title" placeholder="Title">
         </mat-form-field>
-        <mat-form-field fxFlex="25">
-            <input matInput formControlName="authors" placeholder="Authors">
+        <mat-form-field fxFlex="25" fxFlex.xs="100">
+            <input matInput formControlName="authors" placeholder="Authors" [matAutocomplete]="autoAuthor">
+            <mat-autocomplete #autoAuthor="matAutocomplete">
+                <mat-option *ngFor="let author of filteredAuthors | async" [value]="author">
+                    {{author}}
+                </mat-option>
+            </mat-autocomplete>
         </mat-form-field>
-        <mat-form-field fxFlex="25">
-            <input matInput formControlName="journal" placeholder="Journal">
+        <mat-form-field fxFlex="25" fxFlex.xs="100">
+            <input matInput formControlName="journal" placeholder="Journal" [matAutocomplete]="autoJournal">
+            <mat-autocomplete #autoJournal="matAutocomplete">
+                <mat-option *ngFor="let journal of filteredJournals | async" [value]="journal">
+                    {{journal}}
+                </mat-option>
+            </mat-autocomplete>
         </mat-form-field>
-        <mat-form-field fxFlex="25">
+        <mat-form-field fxFlex="25" fxFlex.xs="100">
             <input matInput formControlName="abstract" placeholder="Abstract">
         </mat-form-field>
-        <mat-form-field fxFlex="10">
+        <mat-form-field fxFlex="15" fxFlex.xs="100">
             <input matInput formControlName="volume" placeholder="Volume">
         </mat-form-field>
-        <mat-form-field fxFlex="10">
+        <!-- <mat-form-field fxFlex="10" fxFlex.xs="100">
             <mat-select formControlName="published_year" placeholder="Published Year">
                 <mat-option *ngFor="let year of years" [value]="year">{{year}}</mat-option>
             </mat-select>
         </mat-form-field>
-        <mat-form-field fxFlex="10">
+        <mat-form-field fxFlex="10" fxFlex.xs="100">
             <mat-select formControlName="published_month" placeholder="Published Month">
                 <mat-option *ngFor="let month of months" [value]="month.id">{{month.txt}}</mat-option>
             </mat-select>
-        </mat-form-field>
-        <!-- <mat-form-field fxFlex="10">
+        </mat-form-field> -->
+        <!-- <mat-form-field fxFlex="10" fxFlex.xs="100">
             <input matInput formControlName="issue" placeholder="Issue">
         </mat-form-field> -->
-        <mat-form-field fxFlex="10">
+        <mat-form-field fxFlex="15" fxFlex.xs="100">
             <input matInput formControlName="doi" placeholder="DOI">
         </mat-form-field>
-        <mat-form-field fxFlex="10">
+        <mat-form-field fxFlex="15" fxFlex.xs="100">
             <input matInput formControlName="ref" placeholder="Ref.">
         </mat-form-field>
-        <mat-form-field fxFlex="10">
+        <mat-form-field fxFlex="15" fxFlex.xs="100">
             <input matInput formControlName="covidence" placeholder="Covidence">
         </mat-form-field>
-        <!-- <mat-form-field fxFlex="10">
+        <!-- <mat-form-field fxFlex="10" fxFlex.xs="100">
             <input matInput formControlName="study" placeholder="Study">
         </mat-form-field> -->
-        <!-- <mat-form-field fxFlex="10">
+        <!-- <mat-form-field fxFlex="10" fxFlex.xs="100">
             <input matInput formControlName="created_from" placeholder="From">
         </mat-form-field>
-        <mat-form-field fxFlex="10">
+        <mat-form-field fxFlex="10" fxFlex.xs="100">
             <input matInput formControlName="created_to" placeholder="To">
         </mat-form-field> -->
-        <mat-form-field fxFlex="40">
+        <!-- <mat-form-field fxFlex="40" fxFlex.xs="100">
             <input matInput formControlName="tags" placeholder="Tags">
+        </mat-form-field> -->
+
+        <mat-form-field fxFlex="40" fxFlex.xs="100">
+            <mat-chip-list #chipList>
+                <mat-chip *ngFor="let tag of tags_array" selectable="true" removable="true" (removed)="removeTag(tag)" color="primary">
+                    {{tag}}
+                    <mat-icon matChipRemove>cancel</mat-icon>
+                </mat-chip>
+                <input placeholder="Tags" #tagInput formControlName="tags" [matAutocomplete]="auto" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    (matChipInputTokenEnd)="addTag($event)">
+            </mat-chip-list>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+                    {{tag}}
+                </mat-option>
+            </mat-autocomplete>
         </mat-form-field>
     </div>
-    <!-- </mat-card-content> -->
 </mat-card>
+
+<!-- <pre>{{tags | json}}</pre> -->

@@ -1,26 +1,79 @@
 <div fxLayout="row wrap">
-    <!-- column -->
-    <div fxFlex.gt-sm="25" fxFlex.gt-xs="100" fxFlex="100">
+    <div fxFlex.gt-sm="20" fxFlex.gt-xs="100" fxFlex="100">
         <mat-card>
-            <mat-card-content>
-                <!-- Row -->
-                <div class="d-flex no-block">
-                    <!-- column -->
-                    <div class="m-r-10 no-shrink">
-                        <button mat-fab mat-card-icon class="shadow-none bg-inverse bg-success">
-                            <mat-icon>library_books</mat-icon>
-                        </button>
-                    </div>
-                    <!-- column -->
-                    <div>
-                        <h3 class="m-0">{{qty_articles}}</h3>
-                        <h6 class="text-muted m-0">Articles</h6>
-                    </div>
+            <div class="d-flex no-block" style="padding: 10px">
+                <div class="m-r-10 no-shrink">
+                    <button mat-fab mat-card-icon class="shadow-none bg-inverse bg-success">
+                        <mat-icon>library_books</mat-icon>
+                    </button>
                 </div>
-            </mat-card-content>
+                <div>
+                    <h3 class="m-0">{{qty_articles}}</h3>
+                    <h6 class="text-muted m-0">Articles</h6>
+                </div>
+            </div>
         </mat-card>
     </div>
-
+    <div fxFlex.gt-sm="20" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <div class="d-flex no-block" style="padding: 10px">
+                <div class="m-r-10 no-shrink">
+                    <button mat-fab mat-card-icon class="shadow-none bg-inverse bg-success">
+                        <mat-icon>supervised_user_circle</mat-icon>
+                    </button>
+                </div>
+                <div>
+                    <h3 class="m-0">{{upload?.authors?.length}}</h3>
+                    <h6 class="text-muted m-0">Authors</h6>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+    <div fxFlex.gt-sm="20" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <div class="d-flex no-block" style="padding: 10px">
+                <div class="m-r-10 no-shrink">
+                    <button mat-fab mat-card-icon class="shadow-none bg-inverse bg-success">
+                        <mat-icon>chrome_reader_mode</mat-icon>
+                    </button>
+                </div>
+                <div>
+                    <h3 class="m-0">{{upload?.journals?.length}}</h3>
+                    <h6 class="text-muted m-0">Journals</h6>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+    <div fxFlex.gt-sm="20" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <div class="d-flex no-block" style="padding: 10px">
+                <div class="m-r-10 no-shrink">
+                    <button mat-fab mat-card-icon class="shadow-none bg-inverse bg-success">
+                        <mat-icon>label</mat-icon>
+                    </button>
+                </div>
+                <div>
+                    <h3 class="m-0">{{upload?.tags.length}}</h3>
+                    <h6 class="text-muted m-0">Tags</h6>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+    <div fxFlex.gt-sm="20" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <div class="d-flex no-block" style="padding: 10px">
+                <div class="m-r-10 no-shrink">
+                    <button mat-fab mat-card-icon class="shadow-none bg-inverse bg-success">
+                        <mat-icon>calendar_today</mat-icon>
+                    </button>
+                </div>
+                <div>
+                    <h3 class="m-0">{{upload?.updated | date}}</h3>
+                    <h6 class="text-muted m-0">Last Update</h6>
+                </div>
+            </div>
+        </mat-card>
+    </div>
 </div>
 
-<app-articles-table [qty_articles]="qty_articles"></app-articles-table>
+<app-articles-table [qty_articles]="qty_articles" [tags]="upload?.tags" [journals]="upload?.journals" [authors]="upload?.authors"></app-articles-table>

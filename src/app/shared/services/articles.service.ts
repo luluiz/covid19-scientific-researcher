@@ -22,6 +22,7 @@ export class ArticlesService {
         if (filters?._id) query._id = filters._id;
         if (filters?.title) query.title = filters.title;
         if (filters?.authors) query.authors = filters.authors;
+        // if (filters?.authors_array) query.authors_array = filters.authors_array;
         if (filters?.abstract) query.abstract = filters.abstract;
         if (filters?.published_year) query.published_year = filters.published_year;
         if (filters?.published_month) query.published_month = filters.published_month;
@@ -36,6 +37,7 @@ export class ArticlesService {
         if (filters?.study) query.study = filters.study;
         if (filters?.notes) query.notes = filters.notes;
         if (filters?.tags) query.tags = filters.tags;
+        if (filters?.tags_array) query.tags_array = filters.tags_array;
 
         if (limit) query.limit = limit.toString();
         if (skip) query.skip = skip.toString();
@@ -47,16 +49,15 @@ export class ArticlesService {
     }
 
     count(): Observable<any> {
-        return this.http.get(this.API + '/article/count')
+        return this.http.get(this.API + 'article/count')
+            .pipe(timeout(environment.http_timeout), catchError(erro => this.errorHandlerService.handler(erro)));
+    }
+
+    uploadCSV(file: any): Observable<any> {
+        let formData = new FormData();
+        formData.append('file', file);
+
+        return this.http.post(this.API + 'article/import', formData)
             .pipe(timeout(environment.http_timeout), catchError(erro => this.errorHandlerService.handler(erro)));
     }
 }
-
-    // editarImagemItem(id_cotacao: string, id_item: string, file: File): Observable<any> {
-    //     let id_oficina = this.authService.getIdOficina();
-    //     let formData = new FormData();
-    //     formData.append('file', file);
-
-    //     return this.http.put(this.API + 'cotacao/imagem/' + id_oficina + '/' + id_cotacao + '/' + id_item, formData)
-    //         .pipe(timeout(environment.http_timeout), catchError(erro => this.errorHandlerService.handler(erro)));
-    // }

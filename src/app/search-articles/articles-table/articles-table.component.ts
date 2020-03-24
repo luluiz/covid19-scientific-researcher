@@ -17,6 +17,9 @@ export class ArticlesTableComponent implements OnInit, AfterViewInit, OnChanges 
     @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: true }) sort: MatSort;
     @Input() qty_articles: number;
+    @Input() authors: string[];
+    @Input() journals: string[];
+    @Input() tags: string[];
     // public columns: string[] = ['title', 'authors', 'abstract', 'published_year', 'published_month', 'journal', 'volume', 'issue', 'pages', 'accession', 'doi', 'ref', 'covidence', 'study', 'notes', 'tags', 'created', 'updated', 'open'];
     public columns: string[] = ['title', 'authors', 'journal', 'doi', 'ref', 'open'];
     public length: number = 0;
@@ -30,8 +33,12 @@ export class ArticlesTableComponent implements OnInit, AfterViewInit, OnChanges 
     ) { }
 
     ngOnChanges(changes: SimpleChanges): void {
-        // if (changes && !changes.qty_articles.firstChange)
-        // this.length = this.qty_articles;
+        if (changes && !changes.authors?.firstChange)
+            this.authors = changes.authors?.currentValue;
+        if (changes && !changes.journals?.firstChange)
+            this.journals = changes.journals?.currentValue;
+        if (changes && !changes.tags?.firstChange)
+            this.tags = changes.tags?.currentValue;
     }
 
     ngOnInit(): void {
@@ -47,7 +54,7 @@ export class ArticlesTableComponent implements OnInit, AfterViewInit, OnChanges 
         let pag = this.getPagination();
         let filters = _filters ? _filters : null;
 
-        this.articleService.get(filters, pag.limit, pag.skip, sort.sort, sort.direction)
+        this.articleService.get(filters, pag?.limit, pag?.skip, sort?.sort, sort?.direction)
             .pipe(take(1))
             .subscribe(response => {
                 if (response.success) {

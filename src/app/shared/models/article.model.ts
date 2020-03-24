@@ -4,6 +4,7 @@ export class Article implements Deserializable {
     _id?: string;
     title: string;
     authors: string;
+    authors_array: string;
     abstract: string;
     published_year: string;
     published_month: string;

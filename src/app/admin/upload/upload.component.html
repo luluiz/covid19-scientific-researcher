@@ -1,0 +1,26 @@
+<mat-card>
+    <mat-card-content>
+        <div fxLayout="row wrap" [formGroup]="form">
+
+            <div fxFlex="100">
+                <input #file hidden (change)="setFile(file)" type="file" id="file" accept=".csv">
+                <span fxFlex="initial" class="m-t-10">Select a CSV:</span>
+                <button fxFlex="initial" mat-icon-button (click)="file.click()">
+                    <mat-icon>folder</mat-icon>
+                </button>
+            </div>
+            <mat-form-field fxFlex="70">
+                <input matInput formControlName="description" placeholder="File Name">
+            </mat-form-field>
+            <mat-form-field fxFlex="30">
+                <input matInput formControlName="size" placeholder="File Size">
+            </mat-form-field>
+
+            <div fxFlex="100">
+                <button fxFlex="initial" mat-raised-button (click)="upload()" [disabled]="form.invalid">
+                    <mat-icon>cloud_upload</mat-icon> Upload
+                </button>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
